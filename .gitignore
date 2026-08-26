@@ -33,6 +33,10 @@ bld/
 [Ll]ogs/
 
 ref/
+TODO.md
+INTDESIGN.md
+INTNOTES.md
+*.code-workspace
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/

@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+  <Compile Remove="patcher\**\*.cs" />
+</ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Archipelago.MultiClient.Net" Version="6.6.1" />
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Core" Version="5.*" PrivateAssets="all" />
