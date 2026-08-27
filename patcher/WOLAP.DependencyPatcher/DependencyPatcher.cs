@@ -71,6 +71,8 @@ namespace WOLAP.DependencyPatcher
 
                     patcherLog.LogInfo($"Assembly {name} found at {location} and is version {version}");
                 }
+
+                targetNewton = replacementNewton;
             }  
         public static void Finish() //This method is called when the DependencyPatcher class is finished and it logs that the DependencyPatcher class has finished
             {

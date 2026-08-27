@@ -8,3 +8,5 @@ After some reserch into how BipInEx files work, It would be benifitial to create
 One earlier run reported Backports and ILHelpers absent at Awake(), while the subsequent controlled run found both loaded from the Thunderstore BepInEx core directory.
 One initial run reported MonoMod.Backports and MonoMod.ILHelpers absent during Awake(). Five subsequent launches using the same test could not reproduce this; both assemblies were consistently loaded by the snapshot. Cause unknown. Solution Unknown, No further testing will be concluded unless it becomes a problem.
 
+# Test seed for AP Connection
+https://archipelago.gg/room/blY5GvroSVOIbef6BXJZUw
