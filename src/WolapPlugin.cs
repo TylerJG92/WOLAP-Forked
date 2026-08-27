@@ -27,35 +27,19 @@ namespace WOLAP
         {
             // Plugin startup logic
             Log = Logger;
-            Log.LogInfo("Beginning of WOLAP Dependency Check");
-            List<string> modNeeds = new List<string>
+            //Checks which Newtonsoft.Json version is loaded when the main WOLAP plugin starts
+            var loadedNewtonsoft = AppDomain.CurrentDomain.GetAssemblies()
+                .FirstOrDefault(asm => asm.GetName().Name == "Newtonsoft.Json");
+
+            if (loadedNewtonsoft != null)
             {
-                "MonoMod.Backports",
-                "MonoMod.ILHelpers",
-                "Newtonsoft.Json",
-                "Archipelago.MultiClient.Net",
-                "WOLAP"
-            }; //this creates a list of the files im looking for in the Wolap.Plugin.cs file under Awake()
-
-            var asmFind = AppDomain.CurrentDomain.GetAssemblies();
-            var foundAssemblies = asmFind.Where(
-                asm => modNeeds.Contains(asm.GetName().Name)
-            );
-
-            foreach (var a in modNeeds)
-            {
-                var found = foundAssemblies.FirstOrDefault(asm => asm.GetName().Name == a);
-
-                if (found != null)
-                {
-                    Log.LogInfo($"Assembly {a} found at {found.Location} and is version {found.GetName().Version}");
-                }
-                else
-                {
-                    Log.LogWarning($"{a} not found at this stage");
-                }
+                Log.LogInfo(
+                    $"Newtonsoft.Json version at WOLAP Awake(): {loadedNewtonsoft.GetName().Version}");
             }
-            Log.LogInfo("End of WOLAP Dependency Check");
+            else
+            {
+                Log.LogWarning("Newtonsoft.Json was not loaded when WOLAP Awake() started.");
+            }
             Log.LogInfo($"Plugin {Constants.PluginGuid} is loaded!");
             Harmony = new Harmony(Constants.PluginGuid);
             Harmony.PatchAll(Assembly.GetExecutingAssembly());
