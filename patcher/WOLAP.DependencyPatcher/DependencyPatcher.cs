@@ -2,7 +2,6 @@
 using System.Collections.Generic; //Provides IEnumerable<T>
 using System.IO; //Provides Path and File for working with files and folders
 using System.Linq; //Provides FirstOrDefault and other LINQ methods
-using BepInEx; //Provides BepInEx Paths and other core BepInEx features
 using BepInEx.Logging; //Provides ManualLogSource and BepInEx logging
 using Mono.Cecil; //Provides AssemblyDefinition for reading and replacing assemblies
 
@@ -14,8 +13,8 @@ namespace WOLAP.DependencyPatcher
         //Creates a shared BepInEx log source that Initialize, Patch, and Finish can all use
         private static ManualLogSource patcherLog;
 
-        //Gets the path to the active BepInEx patchers folder
-        private static readonly string patcherFolder = Paths.PatcherPluginPath;
+        //Gets the path of the DLL containing DependencyPatcher, then gets the folder containing that DLL
+        private static readonly string patcherFolder = Path.GetDirectoryName(typeof(DependencyPatcher).Assembly.Location);
 
         //Combines the patcher folder path with the filename of the Newtonsoft.Json v11 replacement
         private static readonly string replacementPath = Path.Combine(patcherFolder, "Newtonsoft.Json.dll");
