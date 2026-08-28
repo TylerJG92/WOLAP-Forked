@@ -10,7 +10,8 @@
 
   <ItemGroup>
   <Compile Remove="patcher\**\*.cs" />
-</ItemGroup>
+  <Compile Remove="ModManager_Packager\**\*.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Archipelago.MultiClient.Net" Version="6.6.1" />
