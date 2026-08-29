@@ -6,8 +6,8 @@ $repoRoot = Split-Path -Parent $packagerRoot
 $patchRoot = Join-Path $repoRoot -ChildPath patcher\WOLAP.DependencyPatcher
 # Root for the ref Folder
 $refRoot = Join-Path $packagerRoot "ref"
-# Root for output folder
-$outputRoot = Join-Path $packagerRoot "output"
+# Root for output folder, different name sorting since this is the End location
+$outputEnd = Join-Path $packagerRoot "output"
 # path to main-mod WOLAP.csproj
 $mMWOLAPProj = Join-Path $repoRoot "WOLAP.csproj"
 # Path to main-mod WOLAP.dll
@@ -24,7 +24,7 @@ $readPath = Join-Path $packagerRoot "README.md"
 $iconPath = Join-Path $packagerRoot "icon.png"
 # Path to ref\Newtonsoft
 $newtPath = Join-Path $refRoot "Newtonsoft.Json.dll"
-# Creates an array of variables under $neededFiles
+# Creates an array of variables for each Path under $neededFiles
 $neededFiles = @(
     $mMWORelPath
     $paWORelPath
@@ -32,6 +32,11 @@ $neededFiles = @(
     $readPath
     $iconPath
     $newtPath
+)
+# Creates an array of variables for each Proj under $needProj
+$neededProj = @(
+    $mMWOLAPProj
+    $paWOLAPProj
 )
 
 foreach($file in $neededFiles) {if ( -not(Test-Path $file)) {
