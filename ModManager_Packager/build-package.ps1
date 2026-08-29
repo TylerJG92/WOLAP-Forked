@@ -1,3 +1,5 @@
+# Tells PowerShell if anything Errors to stop running the code
+$ErrorActionPreference = "Stop"
 # Folder conatining this packaging script
 $packagerRoot = $PSScriptRoot
 # Root folder of the WOLAP Repository
@@ -25,12 +27,17 @@ $iconPath = Join-Path $packagerRoot "icon.png"
 # Path to ref\Newtonsoft
 $newtPath = Join-Path $refRoot "Newtonsoft.Json.dll"
 # Path to all Licenses in .\ModManager_Packager\LICENSES
-$licensesPaths = Get-ChildItem $licensesRoot
+$licensesObj = Get-ChildItem $licensesRoot
+$licensesPaths = $LicensesObj.FullName
 # Path to WOLAP mod License
 $mMLicensePath = Join-Path $repoRoot "LICENSE"
 # Root for output folder, different name sorting since this is the End location
 $outputEnd = Join-Path $packagerRoot "output"
 
+$csProjs = @(
+    $mMWOLAPProj
+    $paWOLAPProj
+)
 # Creates an array of variables for each Path that needs to be checked before we run the .csproj files to get the last files for the packager
 $neededFiles = @(
     $maniPath
@@ -47,21 +54,29 @@ $neededFilesEnd = @(
     $neededFiles
 )
 # Creates an array of variables for each Proj under $needProj
-$neededProj = @(
-    $mMWOLAPProj
-    $paWOLAPProj
-)
+
 
 Write-Host "Checking required files before starting .dll creation"
 # pre-check to see if all files EXCEPT for the files that need to be made in the .csproj are present
 foreach($file in $neededFiles) {if ( -not(Test-Path $file)) {
     throw "Required file not found at $file"
 }}
-Write-Host "All required files in place, Creating WOLAP.dll and WOLAP.DependencyPatcher.dll"
+Write-Host "All required files in place"
+Write-Host "Checking .csproj codes exist"
+# redundant pre-check to see if all .csproj codes exist before Creating their .dll files
+foreach($proj in $csProjs) {if ( -not(Test-Path $proj)) {
+    throw "Why did you move/rename the .csproj at $proj"
+}}
+Write-Host ".csproj code exists, creating WOLAP.dll and WOLAP.DependencyPatcher.dll"
 
-# code to start the creation of the .dll files goes here
+# creates the .dll files from their respective .csproj files
+foreach ($pro in $csProjs) {dotnet build $pro -c Release 
+    if ($LASTEXITCODE) {
+        throw "Project code at $pro failed, please check the code"
+}}
 
-Write-Host: "Checking required files before Packaging"
+
+Write-Host "Checking required files before Packaging"
 # will run after the .csproj files create their release .dll files, checks if all required files for packaging are present and throws an error if not
 foreach($file2 in $neededFilesEnd) {if ( -not(Test-Path $file2)) {
     throw "Required file not found at $file2"
