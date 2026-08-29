@@ -3,6 +3,7 @@ using BepInEx.Logging;
 using HarmonyLib;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -26,6 +27,18 @@ namespace WOLAP
         {
             // Plugin startup logic
             Log = Logger;
+            //Checks which Newtonsoft.Json version is loaded when the main WOLAP plugin starts
+            var loadedNewtonsoft = AppDomain.CurrentDomain.GetAssemblies()
+                .FirstOrDefault(asm => asm.GetName().Name == "Newtonsoft.Json");
+
+            if (loadedNewtonsoft != null)
+            {
+                Log.LogInfo($"Newtonsoft.Json version at WOLAP Awake(): {loadedNewtonsoft.GetName().Version}");
+            }
+            else
+            {
+                Log.LogWarning("Newtonsoft.Json was not loaded when WOLAP Awake() started.");
+            }
             Log.LogInfo($"Plugin {Constants.PluginGuid} is loaded!");
             Harmony = new Harmony(Constants.PluginGuid);
             Harmony.PatchAll(Assembly.GetExecutingAssembly());
