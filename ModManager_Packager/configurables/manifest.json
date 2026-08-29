@@ -1,0 +1,9 @@
+{
+  "name": "WOLAP",
+  "version_number": "0.2.3",
+  "website_url": "https://github.com/Lucasvdm/WOLAP",
+  "description": "Archipelago randomizer integration for West of Loathing.",
+  "dependencies": [
+    "BepInEx-BepInExPack-5.4.2305"
+  ]
+}
