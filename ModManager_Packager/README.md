@@ -1,0 +1,10 @@
+# Thunderstore .Zip Packager
+This packager is meant to utilize Powershell to verify all files are in their right folders, grab them and package them into the correct format within a .Zip file for submission to Thunderstore for maintaining and updating the mod. Follow the instructions below for anything you need to do before running the code. (Note: The code currently grabs the necessary `Archipalgo.MultiClient.net.dll`, `MonoMod.Backports.dll` and `MonoMod.ILHelpers.dll`, you will need to have NuGet get any new .dll files that are needed or drop the new .dll file That it is expected to be packaged in BepInEx under (See example below))   
+
+## Instructions for packager use
+1. In your Powershell terminal run this command `.\ModManager_Packager\run-first.ps1`, this will have powershell create all necessary and optional folders needed for the packager to work correctly
+2. Place the `Newtonsoft.Json.dll` file that is specially modified for the `Archipelago.MultiClient.Net.dll` within `.\ModManager_Packager\ref` at the top layer of that folder, any extra .dlls go into their respective folders under `BepInEx\` (I.E. If you need something to be placed in the `plugins` folder under BepInEx, like WOLAP.dll, place it in this folder path `.\ModManager_Packager\extra\BepInEx\plugins\` and the code will put it in the correct location in the .Zip)
+3. Make any changes to the `manifest.json` regarding any changes to Version number of the mod or any new dependencies ect.
+4. Update the `README.md` file with anything new (Note this is found in the same folder location as `manifest.json`, do not edit this `README.md` as it is not used in the .Zip)
+5. Update the `CHANGELOG.md` file with any Relivant changes that the update causes
+6. If any new Licenses need to be added as well, add them as a renamed-LICENSE.txt file and update the `THIRD-PARTY-NOTICES.md` file within `.\ModManager_Packager\LICENSES`
