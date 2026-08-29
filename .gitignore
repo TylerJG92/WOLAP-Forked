@@ -45,6 +45,7 @@ ModManager_Packager/**/*.pdb
 
 # Generated Mod Manager package output
 ModManager_Packager/output/
+ModManager_Packager/temp/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
