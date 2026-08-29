@@ -2,7 +2,7 @@
 
 Thunderstore plugin-local Newtonsoft test: Vanilla Newtonsoft 9 retained in the game's Managed directory. Newtonsoft 11 placed alongside WOLAP and Archipelago.MultiClient.Net in the Thunderstore profile. WOLAP and its UI load successfully, but attempting to create an Archipelago session throws a TypeLoadException because Newtonsoft.Json.Linq.JToken from Newtonsoft.Json 11.0.0.0 cannot be resolved.
 
-After some reserch into how BipInEx files work, It would be benifitial to create a patch file instead that would load before the game and inject the file where it needs to go. Im going to try placing the Newtonsoft.Json.dll file there first before trying to make a patch file to see if that works.
+After some research into how BepInEx files work, It would be beneficial to create a patch file instead that would load before the game and inject the file where it needs to go. I'm going to try placing the Newtonsoft.Json.dll file there first before trying to make a patch file to see if that works.
 - Solution:
     - BepInEx has a pre-loader patcher system that allows for us to be able to find both the current Newtonsoft.Json.dll within the main games files (v9.0.0.0) and replace it at runtime only to the Newtonsoft.Json.dll file needed for the Archipelago Client (v11.0.0.0), This does **Not** replace the file permanently, instead only replacing at runtime, allowing all base files for WoL to remain untouched or changed. A working pre-loader patch has been created and now resides in `.\patcher\WOLAP.DependencyPatcher\DependencyPatcher.cs`
 
