@@ -5,7 +5,7 @@ A client mod for [West of Loathing](https://store.steampowered.com/app/597220/We
 This mod is very much incomplete, but it *should* be playable. Bug reports and all kinds of feedback are welcome, and should be directed to the West of Loathing thread in the `#future-game-design` channel on the [Archipelago Discord server](https://discord.gg/8Z65BR2).
 
 ## Installation Instructions
-There are now two different ways to install the WOLAP mod. You may choose to use Thunderstore Mod Manager or manually install the mod yourself. Instructions for both installation methods are provided below.
+There are now three different ways to install the WOLAP mod. You may choose to use Thunderstore Mod Manager, r2modman or manually install the mod yourself. Instructions for both installation methods are provided below.
 
 ### Thunderstore Installation (Windows)
 Thunderstore is a Mod Manager that is used to download and play modded versions of games without messing with the vanilla games files and without needing to know anything about file/folder manipulation. Use of Thunderstore requires Overwolf.
