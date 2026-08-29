@@ -33,8 +33,7 @@ namespace WOLAP
 
             if (loadedNewtonsoft != null)
             {
-                Log.LogInfo(
-                    $"Newtonsoft.Json version at WOLAP Awake(): {loadedNewtonsoft.GetName().Version}");
+                Log.LogInfo($"Newtonsoft.Json version at WOLAP Awake(): {loadedNewtonsoft.GetName().Version}");
             }
             else
             {
