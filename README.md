@@ -5,20 +5,20 @@ A client mod for [West of Loathing](https://store.steampowered.com/app/597220/We
 This mod is very much incomplete, but it *should* be playable. Bug reports and all kinds of feedback are welcome, and should be directed to the West of Loathing thread in the `#future-game-design` channel on the [Archipelago Discord server](https://discord.gg/8Z65BR2).
 
 ## Installation Instructions
-There is now 2 different ways to install the WOLAP mod. You may choose from using Thunderstore Mod Manager or Manually installing the mod on your own. You will find seperate instructions for both ways of installing the mod below.
+There are now two different ways to install the WOLAP mod. You may choose to use Thunderstore Mod Manager or manually install the mod yourself. Instructions for both installation methods are provided below.
 
 ### Thunderstore Installation
 1. Download the Thunderstore application [Here](https://www.overwolf.com/app/thunderstore-thunderstore_mod_manager)
-2. Open the Thunderstore application and enter "West of Loathing" into the searchbar
-3. Click on the option that shows up when hovering over the game that says `Select Game`
-4. Select or Create a mod profile
-5. On the left side of the screen select `Get Mods`
-6. Click on `WOLAP`, then download the most recent release and its dependencies.
-7. Once everything is downloaded, you should see 2 Mods in `My Mods` on the left side of the screen: `BepInEx` and `WOLAP`, you may now launch the mod by selecting "(play) Modded" in the top right-ish
+2. Open the Thunderstore application and enter "West of Loathing" into the search bar
+3. Click on the option that appears when hovering over the game that says `Select Game`
+4. Select or create a mod profile
+5. On the left side of the screen, select `Get Mods`
+6. Click on `WOLAP`, then download the most recent release and its dependencies
+7. Once everything is downloaded, you should see `BepInEx` and `WOLAP` under `My Mods` on the left side of the screen. You may now launch the mod by selecting `(play) Modded` near the top-right of the application
 
-The modded version of West of Loathing can be launched at any time using the "(play) Modded" button within the Thunderstore Mod Manager in the profile you installed it under.
+The modded version of West of Loathing can be launched at any time using the `(play) Modded` button within Thunderstore Mod Manager while using the profile where WOLAP is installed.
 
-This installation option shouldnt interfear at all with the vanilla games files and as such a Vanilla launch of the game will be achievable through Steam as normal or by clicking "(play) Vanilla" next to the modded button.
+Installing WOLAP through Thunderstore Mod Manager should not interfere with the vanilla game files. You can continue launching the vanilla game normally through Steam, or by selecting `(play) Vanilla` next to the modded launch button.
 
 ### Manual Installation
 1. Locate your West of Loathing directory (on Steam, right-click on West of Loathing > Manage > Browse local files)
