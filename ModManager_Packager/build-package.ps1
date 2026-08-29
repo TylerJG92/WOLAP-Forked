@@ -9,11 +9,11 @@ $refRoot = Join-Path $packagerRoot "ref"
 # Root for output folder
 $outputRoot = Join-Path $packagerRoot "output"
 # path to main-mod WOLAP.csproj
-$mMWOLAPPath = Join-Path $repoRoot "WOLAP.csproj"
+$mMWOLAPProj = Join-Path $repoRoot "WOLAP.csproj"
 # Path to main-mod WOLAP.dll
 $mMWORelPath = Join-Path $repoRoot -ChildPath bin\Release\netstandard2.0\WOLAP.dll
 # Path to patch WOLAP.DependencyPatcher.csproj
-$paWOLAPPath = Join-Path $patchRoot "WOLAP.DependencyPatcher.csproj"
+$paWOLAPProj = Join-Path $patchRoot "WOLAP.DependencyPatcher.csproj"
 # Path to patch WOLAP.DependencyPatcher.dll
 $paWORelPath = Join-Path $patchRoot -ChildPath bin\Release\net35\WOLAP.DependencyPatcher.dll
 # Path to manifest
@@ -24,5 +24,16 @@ $readPath = Join-Path $packagerRoot "README.md"
 $iconPath = Join-Path $packagerRoot "icon.png"
 # Path to ref\Newtonsoft
 $newtPath = Join-Path $refRoot "Newtonsoft.Json.dll"
+# Creates an array of variables under $neededFiles
+$neededFiles = @(
+    $mMWORelPath
+    $paWORelPath
+    $maniPath
+    $readPath
+    $iconPath
+    $newtPath
+)
 
-
+foreach($file in $neededFiles) {if ( -not(Test-Path $file)) {
+    throw "Required file not found at $file"
+}}
