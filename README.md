@@ -7,7 +7,9 @@ This mod is very much incomplete, but it *should* be playable. Bug reports and a
 ## Installation Instructions
 There are now two different ways to install the WOLAP mod. You may choose to use Thunderstore Mod Manager or manually install the mod yourself. Instructions for both installation methods are provided below.
 
-### Thunderstore Installation
+### Thunderstore Installation (Windows)
+Thunderstore is a Mod Manager that is used to download and play modded versions of games without messing with the vanilla games files and without needing to know anything about file/folder manipulation. Use of Thunderstore requires Overwolf.
+
 1. Download the Thunderstore application [Here](https://www.overwolf.com/app/thunderstore-thunderstore_mod_manager)
 2. Open the Thunderstore application and enter "West of Loathing" into the search bar
 3. Click on the option that appears when hovering over the game that says `Select Game`
@@ -16,11 +18,28 @@ There are now two different ways to install the WOLAP mod. You may choose to use
 6. Click on `WOLAP`, then download the most recent release and its dependencies
 7. Once everything is downloaded, you should see `BepInEx` and `WOLAP` under `My Mods` on the left side of the screen. You may now launch the mod by selecting `(play) Modded` near the top-right of the application
 
-The modded version of West of Loathing can be launched at any time using the `(play) Modded` button within Thunderstore Mod Manager while using the profile where WOLAP is installed.
+The modded version of West of Loathing can be launched at any time using the `(play) Modded` button within Thunderstore Mod Manager while using the profile you selected/created priorly.
 
-Installing WOLAP through Thunderstore Mod Manager should not interfere with the vanilla game files. You can continue launching the vanilla game normally through Steam, or by selecting `(play) Vanilla` next to the modded launch button.
+Installing WOLAP through Thunderstore Mod Manager should not interfere with the vanilla game files. You can continue launching the vanilla game normally through Steam, or by selecting `(play) Vanilla` next to the modded launch button within Thunderstore.
 
-### Manual Installation
+### r2modman Installation (Windows/Linux)
+r2modman like Thunderstore is a Mod Manager that is used to download and play mods without messing with the vanilla game files. r2modman uses Thunderstore's website to gather Mods that are posted for specific games. Use of r2modman does **Not** require Overwolf and is more lightweight than Thunderstore
+
+**Note**: This setup has not been tested for Linux, If you are willing to test it for Linux, feel free to ping @TylerJG92 in the West of Loathing Archipelago thread [Here](https://discord.com/channels/731205301247803413/1273856413327822950), post a copy of your BepInEx log file and I will look at it when I can. This should work in theory but if it dosent I would like to see why.
+
+1. Download the r2modman application [Here](https://thunderstore.io/c/riskofrain2/p/ebkr/r2modman/) and follow the setup guide under `Installing` for the computer system you use.
+2. Open the r2modman application and enter "West of Loathing" into the seach bar
+3. Click on the option that appears when hovering over the game that says `Select Game`
+4. Select or create a mod profile
+5. On the left side of the screen, select `Online`
+6. Click on `WOLAP`, then `Download` on the right then download the most recent release with dependencies
+7. Once everything is downloaded, you should see `BepInEx` and `WOLAP` under `Installed` on the left side of the screen. You man now launch the mod by seleting `(play) Start modded` in the top left.
+
+The modded version of West of Loathing can be launched at any time using the `(play) Start modded` button within r2modman while using the profile you selected or created priorly.
+
+Installing WOLAP through r2modman should not interfere with the vanilla game files. You can continue launching the vanilla game normally through Steam or by selecting the dropdown next to `(play) Start modded` and then selecting the option `(play) Start vanilla` within r2modman.
+
+### Manual Installation (Windows/Linux/macOS)
 1. Locate your West of Loathing directory (on Steam, right-click on West of Loathing > Manage > Browse local files)
 2. Download the latest stable release of [BepInEx](https://github.com/BepInEx/BepInEx/releases) (the x64 version)
 3. Extract the contents of the downloaded .zip into the West of Loathing directory
@@ -62,3 +81,18 @@ The following extra Archipelago options have been implemented to configure the r
   - This allows you to specify items you will start with that then *won't* be included in the item pool -- as opposed to `start_inventory`, which lets you start with copies of items from the pool
 
 In addition to the basic randomization, this mod makes various changes to the game's logic and mechanics to try to make it work better with Archipelago.  A full list of these changes can be found in the [docs](./docs/changelist.md).
+
+## AI Usage Disclosure
+* WOLAP is **not** vibe-coded
+* WOLAP does **not** contain AI art
+This mod uses AI very minimally, Useage is as follows:
+- Xylen:
+  - In response to being asked on 8/4/26 if they used AI for the ap world: "Nope. In the interest of full, 100% honest disclosure, I used chatgpt exactly twice through development to try asking it about a couple of weird bugs that had me stuck. It basically just confirmed for me both times that the code I was looking at was fine so I went and manually found the bug elsewhere. None of the code (in the main games mod) is AI-generated" (https://discord.com/channels/731205301247803413/1273856413327822950/1534239231168479242)
+- TylerJG92:
+  - I am very new to coding and used ChatGPT as a tutor and guide **ONLY** and will continue with that in the main games code until I am comfortable enough to no longer need it as a tutor.
+    - Utilizing ChatGPT as a tutor and guide means I did not allow it to generate any code for me, All it ever did was explain steps I might take in troubleshooting, explain coding concepts and spesifics of how C# works together so I could grow to understand how this coding language works
+  - I did use ChatGPT to generate some code **outside** of the games mod for an internal folder only.
+    - Most of the code writen under `.\ModManager_Packager` is written by me, but I was under a self imposed time crunch and needed to complete the project. Within `build-package.ps1` there is generated code and looking back at it now there is a large chunk of it that is ai generated. I will be removing and re-writing it over the coming weeks in my own way instead of utilizing the generated code. Mainly as a means to learn about the concepts it used that I had not learned. As for architectural design, folder layout, ect. Those were all my ideas and I was very slowly working toward the same type of code myself.
+      - This folder `.\ModManager_Packager` is used only to gather all the necessary files needed to package the .Zip folder for upload to Thunderstore. This Folder has nothing to do with the code that is run while playing the games mod.
+    - Within the `.\patcher\WOLAP.DependencyPatcher` Almost all of the code within is hand written by me. There is a part where I allowed ChatGPT to remove all my testing loggers in `DependencyPatcher.cs` and instructed it to not remove or change any of the other code I put in. I reviewed it thoroughly for any possible changes it made to the code as well, and it kept it as I wished, only removing the loggers.
+      - This folder `.\patcher\WOLAP.DependencyPatcher` is to create a BepInEx preloader patcher file that then gets used by BepInEx to replace the vanilla games `Newtonsoft.Json.dll` file in runtime with the Archipelago.MultiClient.Net.dll's dependent `Newtonsoft.Json.dll` to allow the mod to run properly. This patcher file does not affect the the gameplay of the mod, except to steamline installation.
