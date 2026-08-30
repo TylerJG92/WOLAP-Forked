@@ -5,7 +5,8 @@ A client mod for [West of Loathing](https://store.steampowered.com/app/597220/We
 This mod is very much incomplete, but it *should* be playable. Bug reports and all kinds of feedback are welcome, and should be directed to the West of Loathing thread in the `#future-game-design` channel on the [Archipelago Discord server](https://discord.gg/8Z65BR2).
 
 ## Installation Instructions
-There are now two different ways to install the WOLAP mod. You may choose to use Thunderstore Mod Manager or manually install the mod yourself. Instructions for both installation methods are provided below.
+There are now three different ways to install the WOLAP mod. You may choose to use Thunderstore Mod Manager, r2modman or manually install the mod yourself. Instructions for both installation methods are provided below.
+**NOTE**: If you in the future are switching from Manual Installation to one of the Mod Manager installations please follow the uninstall instructions in Manual Installation
 
 ### Thunderstore Installation (Windows)
 Thunderstore is a Mod Manager that is used to download and play modded versions of games without messing with the vanilla games files and without needing to know anything about file/folder manipulation. Use of Thunderstore requires Overwolf.
@@ -25,7 +26,7 @@ Installing WOLAP through Thunderstore Mod Manager should not interfere with the 
 ### r2modman Installation (Windows/Linux)
 r2modman like Thunderstore is a Mod Manager that is used to download and play mods without messing with the vanilla game files. r2modman uses Thunderstore's website to gather Mods that are posted for specific games. Use of r2modman does **Not** require Overwolf and is more lightweight than Thunderstore
 
-**Note**: This setup has not been tested for Linux, If you are willing to test it for Linux, feel free to ping @TylerJG92 in the West of Loathing Archipelago thread [Here](https://discord.com/channels/731205301247803413/1273856413327822950), post a copy of your BepInEx log file and I will look at it when I can. This should work in theory but if it dosent I would like to see why.
+**Note**: This setup has **NOT** been tested for Linux, If you are willing to test it for Linux, feel free to ping @TylerJG92 in the West of Loathing Archipelago thread [Here](https://discord.com/channels/731205301247803413/1273856413327822950), post a copy of your BepInEx log file if it fails to work or any unexpected errors show up and I will look at it when I can. This should work in theory but if it dosent I would like to see why.
 
 1. Download the r2modman application [Here](https://thunderstore.io/c/riskofrain2/p/ebkr/r2modman/) and follow the setup guide under `Installing` for the computer system you use.
 2. Open the r2modman application and enter "West of Loathing" into the seach bar
@@ -40,19 +41,31 @@ The modded version of West of Loathing can be launched at any time using the `(p
 Installing WOLAP through r2modman should not interfere with the vanilla game files. You can continue launching the vanilla game normally through Steam or by selecting the dropdown next to `(play) Start modded` and then selecting the option `(play) Start vanilla` within r2modman.
 
 ### Manual Installation (Windows/Linux/macOS)
+
+**NOTE** The new BepInEx\patchers option on step 7 has **NOT** been tested on Linux or macOS, If you would like to test those yourself, feel free to ping @TylerJG92 in the West of Loathing Archipelago thread [Here](https://discord.com/channels/731205301247803413/1273856413327822950), post a copy of your BepInEx log file if it fails to work or any unexpected errors show up and I will look at it when I can. This should work in theory but if it dosent I would like to see why.
+
 1. Locate your West of Loathing directory (on Steam, right-click on West of Loathing > Manage > Browse local files)
 2. Download the latest stable release of [BepInEx](https://github.com/BepInEx/BepInEx/releases) (the x64 version)
 3. Extract the contents of the downloaded .zip into the West of Loathing directory
 4. Launch West of Loathing once.  Close it once it reaches the title screen, this is just to finish installing BepInEx.
 5. Download the latest [WOLAP release](https://github.com/Lucasvdm/WOLAP/releases) and extract its contents
-6. From the MonoMod folder, copy the MonoMod.Backports and MonoMod.ILHelpers .dll files into BepInEx/core
-7. From the Newtonsoft folder, copy the Newtonsoft.Json.dll file into "West of Loathing_Data/Managed", overwriting the existing Newtonsoft.Json.dll
+6. From the MonoMod folder, copy the MonoMod.Backports and MonoMod.ILHelpers .dll files into BepInEx\core
+7. There are now 2 methods for this instruction, choose **1** of the following options:
+  * From the Patcher folder, copy WOLAP.DependencyPatcher.dll and Newtonsoft.Json.dll into BepInEx\patchers
+  * From the Patcher folder, copy the Newtonsoft.Json.dll file into "West of Loathing_Data\Managed", overwriting the existing Newtonsoft.Json.dll
     - Note: On Mac, there is no "West of Loathing_Data" folder. You instead need to right-click/Cmd-click on the West of Loathing app, then click "Show Package Contents" and go to Contents/Resources/Data to find the Newtonsoft.Json.dll.
-8. Copy the WOLAP folder (containing WOLAP.dll and Archipelago.MultiClient.Net.dll) into BepInEx/plugins
+8. Copy the WOLAP folder (containing WOLAP.dll and Archipelago.MultiClient.Net.dll) into BepInEx\plugins
 
-If you want to uninstall the mod, you can just delete the WOLAP folder in BepInEx/plugins.
+- If you installed step 7 by replacing Newtonsoft.Json.dll in "West of Loathing_Data\Managed" and would like to uninstall: 
+  - You can just delete the WOLAP folder in BepInEx\plugins.
+    - The updated Newtonsoft.Json.dll file should have no negative impact on the game, but if you want to completely restore this file to the original version you can simply delete it and verify your game files on Steam (right-click West of Loathing > Properties > Installed Files > Verify integrity of game files).  Just know that the mod needs the updated file to work.
 
-The updated Newtonsoft.Json.dll file should have no negative impact on the game, but if you want to completely restore this file to the original version you can simply delete it and verify your game files on Steam (right-click West of Loathing > Properties > Installed Files > Verify integrity of game files).  Just know that the mod needs the updated file to work.
+- If you installed step 7 by adding the WOLAP.DependencyPatcher.dll and Newtonsoft.Json.dll to BepInEx\patchers folder:
+  - You can just delete the WOLAP folder in BepInEx\plugins and the two files, WOLAP.DependencyPatcher.dll and Newtonsoft.Json.dll, in BepInEx\patchers
+
+- If you are uninstalling the Manual Installation to use one of the Mod Managers (Thunderstore/r2modman) Installations:
+  - Delete the BepInEx folder within the West of Loathing Directory
+  - Verify your game files on Steam (Right-click West of Loathing > Properties > Installed Files > Verify integrity of game files) *This will replace the Newtonsoft.Json.dll file if it was used to replace the original under "West of Loathing_Data\Managed"*
 
 ## What does this mod do?
 The majority of the game's unique items and pickup locations have been randomized.  Currently, most non-unique loot and combat drops, unlimited shop items, and Foragin' plants are not included in the randomization.
