@@ -1,6 +1,6 @@
 {
   "name": "WOLAP",
-  "version_number": "0.2.3",
+  "version_number": "0.2.4",
   "website_url": "https://github.com/Lucasvdm/WOLAP",
   "description": "Archipelago randomizer integration for West of Loathing.",
   "dependencies": [
