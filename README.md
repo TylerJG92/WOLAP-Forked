@@ -51,7 +51,7 @@ Installing WOLAP through r2modman should not interfere with the vanilla game fil
 5. Download the latest [WOLAP release](https://github.com/Lucasvdm/WOLAP/releases) and extract its contents
 6. From the MonoMod folder, copy the MonoMod.Backports and MonoMod.ILHelpers .dll files into BepInEx\core
 7. There are now 2 methods for this instruction, choose **1** of the following options:
-  * From the Patcher folder, copy WOLAP.DependencyPatcher.dll and Newtonsoft.Json.dll into BepInEx\pachers
+  * From the Patcher folder, copy WOLAP.DependencyPatcher.dll and Newtonsoft.Json.dll into BepInEx\patchers
   * From the Patcher folder, copy the Newtonsoft.Json.dll file into "West of Loathing_Data\Managed", overwriting the existing Newtonsoft.Json.dll
     - Note: On Mac, there is no "West of Loathing_Data" folder. You instead need to right-click/Cmd-click on the West of Loathing app, then click "Show Package Contents" and go to Contents/Resources/Data to find the Newtonsoft.Json.dll.
 8. Copy the WOLAP folder (containing WOLAP.dll and Archipelago.MultiClient.Net.dll) into BepInEx\plugins
