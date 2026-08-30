@@ -28,3 +28,6 @@ If applicable, add screenshots to help explain your problem.
 
 **Additional context**
 Add any other context about the problem here.
+
+*** Followup info***
+If you are comfortable please place your Discord @ here for me to be able to follow up and whether you are ok with a response via DM
