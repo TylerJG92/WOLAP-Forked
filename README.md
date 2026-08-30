@@ -62,8 +62,10 @@ Installing WOLAP through r2modman should not interfere with the vanilla game fil
 
 - If you installed step 7 by adding the WOLAP.DependencyPatcher.dll and Newtonsoft.Json.dll to BepInEx\patchers folder:
   - You can just delete the WOLAP folder in BepInEx\plugins and the two files, WOLAP.DependencyPatcher.dll and Newtonsoft.Json.dll, in BepInEx\patchers
+
 - If you are uninstalling the Manual Installation to use one of the Mod Managers (Thunderstore/r2modman) Installations:
-  - Delete the BepInEx folder within the West of Loathing Directory and 
+  - Delete the BepInEx folder within the West of Loathing Directory
+  - Verify your game files on Steam (Right-click West of Loathing > Properties > Installed Files > Verify integrity of game files) *This will replace the Newtonsoft.Json.dll file if it was used to replace the original under "West of Loathing_Data\Managed"*
 
 ## What does this mod do?
 The majority of the game's unique items and pickup locations have been randomized.  Currently, most non-unique loot and combat drops, unlimited shop items, and Foragin' plants are not included in the randomization.
